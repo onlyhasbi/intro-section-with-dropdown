@@ -4,10 +4,16 @@ document.addEventListener(
     const isCollapsible = e.target.matches('[data-toggle="collapse"]');
 
     if (isCollapsible) {
+      // changes aria-expanded status
       const collapsible = e.target.closest('[data-toggle="collapse"]');
       const expanded = collapsible.getAttribute("aria-expanded") === "true";
       collapsible.setAttribute("aria-expanded", !expanded);
 
+      //change navbar to background
+      const parent = e.target.parentElement;
+      parent.classList.toggle('navbar-bg');
+
+      // collapse toggle nav class
       const target = e.target.getAttribute("data-target");
       const dataTarget = e.target.getAttribute("data-toggle");
       const collapse = document.querySelector(target);
@@ -37,4 +43,3 @@ document.addEventListener(
   },
   false
 );
-

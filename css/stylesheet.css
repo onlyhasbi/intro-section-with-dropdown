@@ -57,7 +57,7 @@ button {
 
 /* =================== Mobile Stylesheet ===================== */
 
-/* ********* BEGIN HEADER **************/
+/********** BEGIN HEADER ***********/
 
 .header {
   padding-left: 1.65rem;
@@ -78,12 +78,15 @@ button {
   max-width: 8.35rem;
 }
 
+/* ---- hamburger style ---- */
+
 .hamburger-button {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   cursor: pointer;
+  z-index: 9;
 }
 
 .hamburger-line {
@@ -92,6 +95,8 @@ button {
   border-top: 2px solid #555;
   margin-bottom: 0.6rem;
 }
+
+/* ---- hamburger x transition ---- */
 
 .hamburger-button[aria-expanded="true"] {
   padding-top: 1rem;
@@ -111,26 +116,56 @@ button {
   transition: transform 150ms ease-in-out;
 }
 
+/* ---- nav style ---- */
+
 .nav {
   background: var(--Almost-White);
   width: 24rem;
-  height: 111vh;
+  height: 100vh;
   position: absolute;
-  right: 0;
+  right: -1.65rem;
   top: 0;
   padding: 8.2rem 2.4rem;
   letter-spacing: 0.02rem;
   color: var(--Medium-Gray);
-  transform: translateX(50rem);
+  opacity: 0;
+  transform: translateX(150px);
+  transition: opacity 130ms ease-in-out, transform 150ms ease-in-out;
 }
 
-.nav::before {
+.navbar-bg::before {
   content: "";
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: -1.65rem;
+  animation: fade 200ms ease-in-out;
 }
 
-/* ********* END HEADER ************* */
+/* ---- nav collapse transition ---- */
 
-/* ********* BEGIN MAIN ***********  */
+@keyframes fade {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.collapse {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/********** END HEADER ***********/
+
+/********** BEGIN MAIN ***********/
 
 .hero {
   text-align: center;
@@ -169,7 +204,7 @@ button {
   list-style: none;
 }
 
-/* ********* BEGIN MAIN ***********  */
+/********** END MAIN ***********/
 
 @media screen and (min-width: 800px) {
 }
