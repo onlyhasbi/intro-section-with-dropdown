@@ -34,7 +34,6 @@ h1 {
 }
 
 p {
-  font-size: 1.6rem;
   color: var(--Medium-Gray);
 }
 
@@ -45,19 +44,18 @@ a {
 }
 
 a,
+p,
 span {
   font-size: 1.6rem;
 }
 
 button {
   border: 0;
-  outline: 0;
   background: transparent;
   text-align: center;
 }
 
 .contact-form,
-pre,
 .result {
   font-size: 1.4rem;
 }
@@ -132,16 +130,11 @@ pre,
   padding: 8.2rem 2.4rem;
   letter-spacing: 0.02rem;
   color: var(--Medium-Gray);
-  overflow: hidden;
   transform: translateX(50rem);
-  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   opacity: 0;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
-.collapse {
-  opacity: 1;
-  transform: translateX(0);
-}
 
 /* hero content */
 .hero-content {
@@ -179,8 +172,7 @@ pre,
 }
 
 /* navigation section */
-[aria-expanded="true"].dropdown-toggle {
-  background-image: url("../images/icon-arrow-up.svg");
+[aria-expanded="true"].dropdown-toggle::after {
 }
 
 [aria-expanded="true"] + .dropdown-menu {
@@ -199,11 +191,17 @@ pre,
 }
 
 .dropdown-toggle {
-  background-image: url("../images/icon-arrow-down.svg");
+  /* background-image: url("../images/icon-arrow-down.svg");
   background-repeat: no-repeat;
-  background-position: right center;
+  background-position: right center; */
   padding-right: 2.5rem;
   display: inline-flex;
+}
+
+.dropdown-toggle::after {
+  content: "";
+  background-image: url("../images/icon-arrow-down.svg");
+  transition: back;
 }
 
 .nav,
@@ -223,21 +221,19 @@ pre,
   gap: 2.2rem;
   overflow: hidden;
   padding-bottom: 0.9rem;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: none;
-  animation: animate 150ms ease-in-out;
+  /* opacity: 0; */
+  animation: animate 200ms ease-in-out;
 }
 
 @keyframes animate {
   from {
     display: none;
-    transform: translateY(-10px);
+    max-height: 0;
     opacity: 0;
   }
   to {
     display: flex;
-    transform: translateY(0);
+    max-height: 100%;
     opacity: 1;
   }
 }
@@ -296,179 +292,6 @@ pre,
 }
 
 @media screen and (min-width: 800px) {
-  .container {
-    padding: 0;
-    text-align: left;
-  }
 
-  .header {
-    padding-bottom: 11.55rem;
-  }
-
-  .navbar {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 2.8%;
-    padding-right: 0.75%;
-    width: auto;
-  }
-
-  .brand {
-    max-width: 7.9rem;
-    padding-top: 0.6rem;
-  }
-
-  .hamburger-button {
-    display: none;
-  }
-
-  .nav {
-    width: 100%;
-    height: auto;
-    background: transparent;
-    position: relative;
-    transform: translateX(0);
-    overflow: visible;
-    opacity: 1;
-    padding: 0;
-    margin-left: 5.8rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .nav__item {
-    margin-bottom: 0;
-    margin-right: 2.8rem;
-    position: relative;
-  }
-
-  /* hero section */
-  .hero {
-    margin-top: 3.9rem;
-    display: grid;
-    grid-template-columns: 11.5% 1fr 1fr 4.7%;
-    grid-template-areas:
-      ". content image ."
-      ". client image .";
-  }
-
-  .hero-image {
-    max-width: 45rem;
-    margin: 0 auto;
-    align-self: center;
-    flex: 1;
-    grid-area: image;
-  }
-
-  .hero-content {
-    flex: 1;
-    grid-area: content;
-    text-align: left;
-  }
-
-  .hero__title {
-    font-size: 7.44rem;
-    max-width: 50rem;
-    margin-top: 5rem;
-  }
-
-  .hero__text {
-    font-size: 1.7rem;
-    margin-top: 4.7rem;
-    max-width: 45rem;
-    line-height: 1.53;
-  }
-
-  .btn-more {
-    margin-top: 4.8rem;
-    border-radius: 1.45rem;
-    padding: 1.75rem 2.9rem;
-    letter-spacing: 0.01rem;
-    font-weight: 700;
-  }
-
-  .client-logo__list {
-    grid-area: client;
-    margin-top: 10rem;
-    padding-left: 0;
-    gap: 3.1rem;
-  }
-
-  /* collapsible nav & hamburger section */
-
-  .sign-button {
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
-
-  .btn-login {
-    font-size: 1.3rem;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    margin-left: auto;
-  }
-
-  .btn-register {
-    padding: 0;
-    margin-left: 1rem;
-  }
-
-  /* dropdown style */
-  [aria-expanded="true"] + .dropdown-menu {
-    position: absolute;
-    top: 3.5rem;
-    padding: 0;
-  }
-
-  [aria-expanded="true"] + .features {
-    left: -6.8rem;
-    padding: 2.09rem;
-  }
-
-  [aria-expanded="true"] + .company {
-    margin-left: -0.4rem;
-    padding: 2.15rem;
-    padding-top: 2.25rem;
-    width: 10.8rem;
-  }
-
-  .dropdown-menu {
-    transform: translateY(-10px);
-    gap: 0 !important;
-    border-radius: 1rem;
-    box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.1);
-  }
-
-  .icon {
-    background-size: contain;
-    padding-top: 0.1rem;
-    padding-left: 3rem;
-  }
-
-  .dropdown__item {
-    padding-left: 0rem;
-  }
-
-  .dropdown__item + .dropdown__item {
-    margin-top: 1.4rem;
-  }
-
-  .item__link {
-    font-size: 1.3rem;
-  }
-
-  .btn-login,
-  .btn-register {
-    text-align: center;
-    font-size: 1.4rem;
-    width: 9.4rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  .nav__link,
-  .dropdown-toggle {
-    font-size: 1.4rem;
-  }
+  
 }
